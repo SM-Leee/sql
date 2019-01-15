@@ -12,7 +12,7 @@ select emp_no, now() from employees;
 select emp_no, sysdate() from employees;
 
 -- DATE_DORMAT(date, format) : 입력된 date를 format 형식으로 반환한다.
-select first_name, date_format(hire_date,"%Y-%m-%d %h:%i:%s") from employees;
+select first_name, hire_date, date_format(hire_date,"%Y-%m-%d %h:%i:%s") from employees;
 
 -- PERIOD_DIEF(p1, p2) : YYMM이나 YYYYMM으로 표기되는 p1과 p2의 차이 개월을 반환한다.
 -- ex : 각 직원들에 대해 직원이름과 근무개월수 출력
