@@ -24,4 +24,4 @@ select max(salary), min(salary) from salaries where to_date like '9999-01-01';
 
 -- 문제6.
 -- 최고 어린 사원의 나이와 최 연장자의 나이는?
-select date_format(curdate(), "%Y")-date_format(max(birth_date),"%Y") as '어린사원', date_format(curdate(), "%Y")-date_format(min(birth_date),"%Y") as '연장자' from employees;
+select date_format(curdate(), "%Y")-date_format(max(birth_date),"%Y") as '최연소자', date_format(curdate(), "%Y")-date_format(min(birth_date),"%Y") as '최연장자' from employees;
