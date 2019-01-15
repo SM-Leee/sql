@@ -25,5 +25,14 @@ select * from pet where name = 'Bowser'; -- Bowser라는 이름을 가진 data �
 select * from pet where birth >= '1998-01-01';	-- 출생년도가 1998년 이상인 data 만 가져오시오
 select * from pet where species = 'dog' and gender = 'f';	-- 종이 강아지이고 성별이 암컷인 동물의 data를 가져오시오.
 select * from pet where species='snake' or species ='bird'; -- 종이 뱀이거나 새인 data를 가져오시오.
-
 select name, birth from pet;	-- name 과 birth의 data만 가져오시오.
+
+select name, birth from pet order by birth desc;	-- order by 순서대로 정리하고 싶을때에 사용된다. (desc - 내림차순 / asc - 오름차순(default))
+select name, gender, birth from pet order by gender asc, birth desc;
+
+-- null 다루기
+select * from pet where gender is null;
+
+select * from pet where gender is not null;
+
+
