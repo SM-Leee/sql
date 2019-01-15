@@ -10,3 +10,9 @@ select salary, from_date from salaries where emp_no = 10060;
 
 select *
 from(select max(salary) as max_salary, min(salary) as min_salary from salaries where emp_no = 10060) a;
+
+-- 사원별 몇 번의 직책 변경이 있었는지 조회
+select emp_no, count(*) from titles group by emp_no;
+
+-- 각 사원별로 평균연봉 출력하되 50000불 이상인 직원만 출력
+select emp_no, avg(salary) from salaries group by emp_no having avg(salary)>=50000;
