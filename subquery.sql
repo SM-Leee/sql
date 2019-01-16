@@ -27,6 +27,7 @@ select b.title, avg(a.salary) as avg_salary
 	from salaries a, titles b
     where a.emp_no = b.emp_no and a.to_date = '9999-01-01' and b.to_date = '9999-01-01' 
     group by b.title
+    
     having avg(a.salary) = (select min(avg_salary)
 	from (select b.title, avg(a.salary) as avg_salary
 			from salaries a, titles b
@@ -37,5 +38,12 @@ select min(avg_salary)
 			from salaries a, titles b
 			where a.emp_no = b.emp_no and a.to_date = '9999-01-01' and b.to_date = '9999-01-01' group by b.title) a;
 
+select title, min(avg_salary)
+	from (select b.title as title, avg(a.salary) as avg_salary
+			from salaries a, titles b
+			where a.emp_no = b.emp_no and a.to_date = '9999-01-01' and b.to_date = '9999-01-01' 
+			group by b.title) a;
+
+ 
 
 
