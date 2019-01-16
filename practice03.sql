@@ -32,7 +32,7 @@ select a.emp_no as '사번', concat(a.first_name,' ',a.last_name) as '이름', e
 -- ‘Technique Leader’의 직책으로 과거에 근무한 적이 있는 모든 사원의 사번과 이름을 출력하세요. (현재 ‘Technique Leader’의 직책(으로 근무하는 사원은 고려하지 않습니다.) 이름은 first_name과 last_name을 합쳐 출력 합니다.
 select distinct a.emp_no as '사번', concat(a.first_name,' ', a.last_name) as '이름'
 	from employees a, titles b
-    where a.emp_no = b.emp_no and b.to_date != '9999-01-01';
+    where a.emp_no = b.emp_no and b.to_date != '9999-01-01' and b.title = 'Technique Leader';
 
 -- 문제6.
 -- 직원 이름(last_name) 중에서 S(대문자)로 시작하는 직원들의 이름, 부서명, 직책을 조회하세요.
