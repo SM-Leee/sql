@@ -30,6 +30,29 @@ from (select c.title, avg(b.salary) as avg_salary
 		where b.emp_no = c.emp_no and b.to_date = '9999-01-01' and c.to_date = '9999-01-01'
 		group by c.title) a;
 
- 
+-- 다중행
+-- in / any / all 
+-- any
+-- =any : 이 중에 한개라도 맞으면 된다 (in이랑 완전 동일하다)(or의 뜻이다)
+-- >=any : 이 중에 한개라도 크면 된다.
+-- >any, <any, <>any, >=any
 
+-- all ( 논리적으로 단일행 이여야만 성립한다 )
+-- =all ,>all, <all, <>all : 한개라도 같지 않아야된다, >=all, <=all
+-- 모든 것과 조건이 같아야지 된다.
 
+-- ex) 현재 급여가 50000 이상인 직원 이름 출력
+select concat(a.first_name,' ',a.last_name), b.salary
+	from employees a, salaries b
+    where a.emp_no = b.emp_no
+    and b.to_date = '9999-01-01'
+    and a.emp_no = any(select emp_no
+						from salaries
+						where salary >= 50000 and to_date = '9999-01-01');
+                        
+select concat(a.first_name,' ',a.last_name), b.salary
+	from employees a,
+		(select emp_no, salary
+			from salaries
+			where salary >= 50000 and to_date = '9999-01-01') b
+	where a.emp_no = b.emp_no and b.salary>=50000;
