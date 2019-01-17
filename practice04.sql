@@ -45,10 +45,14 @@ select c.dept_no,avg(salary) as avg_salary
 			where a.emp_no = b.emp_no and a.emp_no = c.emp_no and b.to_date='9999-01-01' and c.to_date='9999-01-01'
             group by c.dept_no;
     
-    
-    
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
+select *
+	from employees a, 
+
+select b.dept_no, c.dept_name
+	from dept_manager b, departments c
+    where b.dept_no = c.dept_no and b.to_date = '9999-01-01';
 
 
 -- 문제5.
