@@ -20,7 +20,6 @@ select a.emp_no as '사번', concat(a.first_name,' ',a.last_name) as '이름', d
 			group by b.dept_no) e
 	where a.emp_no = b.emp_no and a.emp_no =c.emp_no and c.dept_no = d.dept_no and c.dept_no = e.dept_no
 		and b.to_date = '9999-01-01' and c.to_date = '9999-01-01' and b.salary = e.max_salary
-	group by c.dept_no
     order by e.max_salary desc;
 
 select b.dept_no, max(c.salary) as max_salary
@@ -39,8 +38,7 @@ select a.emp_no as '사번', concat(a.first_name,' ',a.last_name) as '이름', b
 			where a.emp_no = b.emp_no and a.emp_no = c.emp_no and b.to_date='9999-01-01' and c.to_date='9999-01-01'
             group by c.dept_no) d
     where a.emp_no = b.emp_no and a.emp_no = c.emp_no and c.dept_no = d.dept_no and b.to_date='9999-01-01' and c.to_date='9999-01-01'
-    and b.salary > d.avg_salary
-    group by c.dept_no;
+    and b.salary > d.avg_salary;
 
 select c.dept_no,avg(salary) as avg_salary
 			from employees a, salaries b, dept_emp c
