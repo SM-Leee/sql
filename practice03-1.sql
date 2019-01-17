@@ -10,7 +10,7 @@ select b.title as '직책', avg(a.salary) as '평균연봉', count(b.title) as '
 select d.dept_name as '부서', avg(c.salary)
 	from dept_emp a, titles b, salaries c, departments d, employees e
     where a.emp_no = b.emp_no and a.emp_no = e.emp_no and a.emp_no = c.emp_no and b.title = 'Engineer' and a.dept_no = d.dept_no and a.to_date='9999-01-01' and b.to_date ='9999-01-01' and c.to_date = '9999-01-01'
-    group by a.dept_no;
+    group by d.dept_name;
 
 -- 예제7. 현재 직책별로 급여의 총합을 구하되 Engineer직책은 제외하세요.
 -- 		단, 총합이 2,000,000,000 이상인 직책만 나타내며 급여총합에 대해서 내림차순(desc)로 정렬하세요.
