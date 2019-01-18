@@ -47,12 +47,16 @@ select c.dept_no,avg(salary) as avg_salary
     
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
-select *
-	from employees a, 
+select a.emp_no as '사번', concat(a.first_name,' ',a.last_name) as '이름', d.name as '매니저', c.dept_name as '부서'
+	from employees a, dept_emp b, departments c, 
+    (select b.dept_no, c.dept_name, concat(a.first_name,' ',a.last_name) as name
+		from employees a, dept_manager b, departments c
+		where a.emp_no = b.emp_no and b.dept_no = c.dept_no and b.to_date = '9999-01-01') d
+	where a.emp_no = b.emp_no and b.dept_no = c.dept_no and b.dept_no = d.dept_no and b.to_date = '9999-01-01';
 
-select b.dept_no, c.dept_name
-	from dept_manager b, departments c
-    where b.dept_no = c.dept_no and b.to_date = '9999-01-01';
+select b.dept_no, c.dept_name, concat(a.first_name,' ',a.last_name) as name
+	from employees a, dept_manager b, departments c
+    where a.emp_no = b.emp_no and b.dept_no = c.dept_no and b.to_date = '9999-01-01';
 
 
 -- 문제5.
